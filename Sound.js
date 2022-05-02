@@ -5,9 +5,9 @@ var mirror = new ambisonics.sceneMirror(audioContext, order);
 var rotator = new ambisonics.sceneRotator(audioContext, order);
 var binDecoder = new ambisonics.binDecoder(audioContext, order)
 var space = audioContext.createPanner()
-const listener = audioContext.listener;
+//const listener = audioContext.listener;
 //const audioBuffer = audioContext.createBuffer(document.getElementById("SoundAmbi"));
-const splitter = audioContext.createChannelSplitter();
+//const splitter = audioContext.createChannelSplitter();
 
 // var xhr = new XMLHttpRequest();
 // console.log(document.getElementById('SoundAmbi').src)
@@ -32,7 +32,7 @@ function AudioBegin(style) {
 	style.position = "absolute";
 	audioContext.resume();
 	gainControl.gain.setValueAtTime(10, 0);
-	listener.setPosition(0, 0, 0);
+	//listener.setPosition(0, 0, 0);
 
 
 	//buffer.connect(encoder.in);
@@ -50,12 +50,12 @@ function AudioBegin(style) {
 	console.log(document.getElementById("SoundAmbi").src)
 	gainControl.connect(encoder.in)
 	source.connect(gainControl);
-	// document.getElementById("SoundAmbi").play()
+	document.getElementById("SoundAmbi").play()
 	//splitter.numberOfOutputs = 25
 	//splitter.channelCount = 25
 
 
-	getData(document.getElementById("SoundAmbi").src)
+	// getData(document.getElementById("SoundAmbi").src)
 
 
 
@@ -78,39 +78,33 @@ function AudioBegin(style) {
 }
 
 
-function getData( currSource ) {
+// function getData( currSource ) {
 
-  sourcea = audioCxt.createBufferSource();  
-  var request = new XMLHttpRequest();
-  request.open('GET', currSource , true);  //for example 'sample.ogg'
-  request.responseType = 'arraybuffer';
+//   sourcea = audioCxt.createBufferSource();  
+//   var request = new XMLHttpRequest();
+//   request.open('GET', currSource , true);  //for example 'sample.ogg'
+//   request.responseType = 'arraybuffer';
 
-  request.onload = function() {
-    var audioData = request.response;
+//   request.onload = function() {
+//     var audioData = request.response;
 
-    audioCxt.decodeAudioData(audioData, function(buffer) {
-        sourcea.buffer = buffer;
+//     audioCxt.decodeAudioData(audioData, function(buffer) {
+//         sourcea.buffer = buffer;
         
-        console.log('detected '+buffer.numberOfChannels+' audio channels in the selected file');
-        }, //end succes        
+//         console.log('detected '+buffer.numberOfChannels+' audio channels in the selected file');
+//         }, //end succes        
       
-        function(e){
-          console.log('error: '+e); //log error
-        }
+//         function(e){
+//           console.log('error: '+e); //log error
+//         }
         
-        ).catch(error => {
-            console.log('failed');
-        });
+//         ).catch(error => {
+//             console.log('failed');
+//         });
           
-      }//end request loaded
-  request.send();
-}
-
-
-
-
-
-
+//       }//end request loaded
+//   request.send();
+// }
 
 
 
