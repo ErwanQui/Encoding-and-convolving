@@ -1,10 +1,4 @@
-const audioContext = new AudioContext();
-const order = 2;
-var encoder = new ambisonics.monoEncoder(audioContext, order);
-var mirror = new ambisonics.sceneMirror(audioContext, order);
-var rotator = new ambisonics.sceneRotator(audioContext, order);
-var binDecoder = new ambisonics.binDecoder(audioContext, order)
-var space = audioContext.createPanner()
+
 //const listener = audioContext.listener;
 //const audioBuffer = audioContext.createBuffer(document.getElementById("SoundAmbi"));
 //const splitter = audioContext.createChannelSplitter();
@@ -23,21 +17,16 @@ var space = audioContext.createPanner()
 
 
 //const buffer = audioContext.createBuffer(1, audioContext.sampleRate*1, audioContext.sampleRate);
-const gainControl = audioContext.createGain();
 
-	const audioCxt = new AudioContext()
-
-function AudioBegin(style) {
-	style.visibility = "hidden";
-	style.position = "absolute";
-	audioContext.resume();
+function Audio1() {
+	console.log("Audio1");
 	gainControl.gain.setValueAtTime(10, 0);
 	//listener.setPosition(0, 0, 0);
 
 
 	//buffer.connect(encoder.in);
-	encoder.out.connect(rotator.in);
-	rotator.out.connect(binDecoder.in);
+	//encoder.out.connect(rotator.in);
+	//rotator.out.connect(binDecoder.in);
 	binDecoder.out.connect(space);
 	space.connect(audioContext.destination)
 	// console.log(mirror)
@@ -48,7 +37,7 @@ function AudioBegin(style) {
 	console.log(document.getElementById("Test"));
 	var source = audioContext.createMediaElementSource(document.getElementById("SoundAmbi"));
 	console.log(document.getElementById("SoundAmbi").src)
-	gainControl.connect(encoder.in)
+	gainControl.connect(binDecoder.in)
 	source.connect(gainControl);
 	document.getElementById("SoundAmbi").play()
 	//splitter.numberOfOutputs = 25

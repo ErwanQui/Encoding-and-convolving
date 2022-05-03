@@ -8,42 +8,53 @@
 		<meta name="gettingStarted" content="Site web"/>
 	</head>
 	<body>
-		<div><Begin>
-			<input type="button" id="Begin" value="Begin" onclick="AudioBegin(style)"/>
+		<div class="Begin"><Begin>
+			<div><Order>
+				<input type="number" id="Order" value="2" min="0" max="6" step="1" onchange="ChangeOrder(value)"/>
+				<label for="Order">Order</label>
+			</Order></div>
+			<input type="button" id="Demo1" value="1" onclick="AudioBegin(id, value)"/>
+			<input type="button" id="Demo2" value="2" onclick="AudioBegin(id, value)"/>
 		</Begin></div>
-		<div><PlaySound>
-			<input type="range" id="SoundValue" value="10" min="0.0" max="30.0" step="0.1" onchange="DispVal(value)"/>
-		</PlaySound></div>
-		<div><DispSound>
-			<input type="button" id="DispSoundValue" value="10"/>
-		</DispSound></div>
-		<div><PlaceSound>
-			<input type="range" id="SoundPlace" value="0" min="-180" max="180.0" step="1" onchange="UpdatePos(0, value)"/>
-			<input type="range" id="SoundPlace" value="0" min="-90" max="90.0" step="1" onchange="UpdatePos(1, value)"/>
-		</PlaceSound></div>
-		<div><DispSoundP>
-			<input type="button" id="DispSoundPlace0" value="0"/>
-			<input type="button" id="DispSoundPlace1" value="0"/>
-		</DispSoundP></div>
-		<div><OrSound>
-			<input type="range" id="SoundOr" value="0" min="-180" max="180.0" step="1" onchange="UpdateOr(0, value)"/>	
-			<input type="range" id="SoundOr" value="0" min="-180" max="180.0" step="1" onchange="UpdateOr(1, value)"/>	
-			<input type="range" id="SoundOr" value="0" min="-180" max="180.0" step="1" onchange="UpdateOr(2, value)"/>
-		</OrSound></div>
-		<div><DispSoundO>
-			<input type="button" id="DispSoundOr0" value="0"/>
-			<input type="button" id="DispSoundOr1" value="0"/>
-			<input type="button" id="DispSoundOr2" value="0"/>
-		</DispSoundO></div>
-		<div class="Ambisonic"><Audio>
-			<audio id="SoundAmbi" type="audio/wav" title="SoundAmbi" src="Ambisonic.wav" loop></audio>
-		</Audio></div>
-		<div class="Test"><Test>
-			<audio id="Test" type="audio/mpeg" title="Test" src="Audio_test.mp3" loop></audio>
-		</Test></div>
+		<div class="Demo1"><Demo1>
+			<div><PlaySound>
+				<input type="range" id="SoundValue" value="10" min="0.0" max="30.0" step="0.1" onchange="DispVal(value)"/>
+			</PlaySound></div>
+			<div><DispSound>
+				<input type="button" id="DispSoundValue" value="10"/>
+			</DispSound></div>
+			<div><PlaceSound>
+				<input type="range" id="SoundPlace" value="0" min="-180" max="180.0" step="1" onchange="UpdatePos(0, value)"/>
+				<input type="range" id="SoundPlace" value="0" min="-90" max="90.0" step="1" onchange="UpdatePos(1, value)"/>
+			</PlaceSound></div>
+			<div><DispSoundP>
+				<input type="button" id="DispSoundPlace0" value="0"/>
+				<input type="button" id="DispSoundPlace1" value="0"/>
+			</DispSoundP></div>
+			<div><OrSound>
+				<input type="range" id="SoundOr" value="0" min="-180" max="180.0" step="1" onchange="UpdateOr(0, value)"/>	
+				<input type="range" id="SoundOr" value="0" min="-180" max="180.0" step="1" onchange="UpdateOr(1, value)"/>	
+				<input type="range" id="SoundOr" value="0" min="-180" max="180.0" step="1" onchange="UpdateOr(2, value)"/>
+			</OrSound></div>
+			<div><DispSoundO>
+				<input type="button" id="DispSoundOr0" value="0"/>
+				<input type="button" id="DispSoundOr1" value="0"/>
+				<input type="button" id="DispSoundOr2" value="0"/>
+			</DispSoundO></div>
+			<div class="Ambisonic"><Audio>
+				<audio id="SoundAmbi" type="audio/wav" title="SoundAmbi" src="Ambisonic.wav" loop></audio>
+			</Audio></div>
+			<div class="Test"><Test>
+				<audio id="Test" type="audio/mpeg" title="Test" src="Audio_test.mp3" loop></audio>
+			</Test></div>
+		</Demo1></div>
+		<div class="Demo2"><Demo2>
+		</Demo2></div>
 		<div><Libraries>
-		<script type="text/javascript" src="node_modules/ambisonics/ambisonics.umd.js"></script>
-		<script type="text/javascript" src="Sound.js"></script>
+			<script type="text/javascript" src="node_modules/ambisonics/ambisonics.umd.js"></script>
+			<script type="text/javascript" src="Common.js"></script>
+			<script type="text/javascript" src="Sound1.js"></script>
+			<script type="text/javascript" src="Sound2.js"></script>
 		</Libraries></div>
 	</body>
 </html>
