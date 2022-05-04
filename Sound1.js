@@ -18,28 +18,26 @@
 
 //const buffer = audioContext.createBuffer(1, audioContext.sampleRate*1, audioContext.sampleRate);
 
-function Audio1() {
+function Audio1(source) {
 	console.log("Audio1");
-	gainControl.gain.setValueAtTime(10, 0);
 	//listener.setPosition(0, 0, 0);
 
 
 	//buffer.connect(encoder.in);
-	//encoder.out.connect(rotator.in);
-	//rotator.out.connect(binDecoder.in);
+	encoder.out.connect(rotator.in);
+	rotator.out.connect(binDecoder.in);
 	binDecoder.out.connect(space);
 	space.connect(audioContext.destination)
 	// console.log(mirror)
 	// console.log(encoder)
 	// console.log(binDecoder)
 	// console.log(rotator)
-	console.log(document.getElementById("SoundAmbi"));
-	console.log(document.getElementById("Test"));
-	var source = audioContext.createMediaElementSource(document.getElementById("SoundAmbi"));
-	console.log(document.getElementById("SoundAmbi").src)
-	gainControl.connect(binDecoder.in)
-	source.connect(gainControl);
-	document.getElementById("SoundAmbi").play()
+	console.log(source)
+	var mediaSource = audioContext.createMediaElementSource(source);
+	console.log(mediaSource.src)
+	gainControl.connect(encoder.in)
+	mediaSource.connect(gainControl);
+	source.play()
 	//splitter.numberOfOutputs = 25
 	//splitter.channelCount = 25
 
@@ -97,14 +95,6 @@ function Audio1() {
 
 
 
-
-
-function DispVal(value) {
-	document.getElementById("DispSoundValue").value = value;
-	gainControl.gain.setValueAtTime(value, 0);
-
-}
-
 //fonction permettant d'update la position des sources sonores
 
 function UpdatePos(i, pos){
@@ -118,9 +108,10 @@ function UpdatePos(i, pos){
 function UpdateOr(i, or){
 	//listener.setOrientation(Math.cos((or-90)*Math.PI/180), 0, Math.sin((or-90)*Math.PI/180), 0, 1, 0);
 	document.getElementById("DispSoundOr"+i).value = or;
-	orientation[i] = -or
+	orientation[i] = -or;
 	rotator.yaw = orientation[0];
 	rotator.pitch = orientation[1];
 	rotator.roll = orientation[2];
 	rotator.updateRotMtx();
+	console.log(rotator);
 }

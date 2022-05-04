@@ -10,31 +10,43 @@
 	<body>
 		<div class="Begin"><Begin>
 			<div><Order>
-				<input type="number" id="Order" value="2" min="0" max="6" step="1" onchange="ChangeOrder(value)"/>
+				<input type="number" id="Order" value="3" min="0" max="3"disabled="true"/>
 				<label for="Order">Order</label>
-			</Order></div>
-			<input type="button" id="Demo1" value="1" onclick="AudioBegin(id, value)"/>
-			<input type="button" id="Demo2" value="2" onclick="AudioBegin(id, value)"/>
+			</Order></div><!-- 
+			<input type="button" id="Demo1" value="1" onclick="Choice(id, value)"/> --><!-- 
+			<input type="button" id="Demo2" value="2" onclick="Choice(id, value)"/>
+			<input type="button" id="Demo3" value="3" onclick="Choice(id, value)"/> -->
+			<input type="button" id="Demo4" value="4" onclick="Choice(id, value)"/>
 		</Begin></div>
-		<div class="Demo1"><Demo1>
+		<div class="FileChoice"><FileChoice>
+			<div><PlaySound>
+				<input type="file" id="File" accept="audio/mpeg, audio/wav"/>
+			</PlaySound></div>
+			<div><DispSound>
+				<input type="button" id="Valid" value="Validate" onclick="Verify()"/>
+			</DispSound></div>
+		</FileChoice></div>
+		<div class="Common"><Common>
 			<div><PlaySound>
 				<input type="range" id="SoundValue" value="10" min="0.0" max="30.0" step="0.1" onchange="DispVal(value)"/>
 			</PlaySound></div>
 			<div><DispSound>
 				<input type="button" id="DispSoundValue" value="10"/>
 			</DispSound></div>
+		</Common></div>
+		<div class="Demo1"><Demo1>
 			<div><PlaceSound>
-				<input type="range" id="SoundPlace" value="0" min="-180" max="180.0" step="1" onchange="UpdatePos(0, value)"/>
-				<input type="range" id="SoundPlace" value="0" min="-90" max="90.0" step="1" onchange="UpdatePos(1, value)"/>
+				<input type="range" id="SoundPlace0" value="0" min="-180" max="180.0" step="1" onchange="UpdatePos(0, value)"/>
+				<input type="range" id="SoundPlace1" value="0" min="-90" max="90.0" step="1" onchange="UpdatePos(1, value)"/>
 			</PlaceSound></div>
 			<div><DispSoundP>
 				<input type="button" id="DispSoundPlace0" value="0"/>
 				<input type="button" id="DispSoundPlace1" value="0"/>
 			</DispSoundP></div>
 			<div><OrSound>
-				<input type="range" id="SoundOr" value="0" min="-180" max="180.0" step="1" onchange="UpdateOr(0, value)"/>	
-				<input type="range" id="SoundOr" value="0" min="-180" max="180.0" step="1" onchange="UpdateOr(1, value)"/>	
-				<input type="range" id="SoundOr" value="0" min="-180" max="180.0" step="1" onchange="UpdateOr(2, value)"/>
+				<input type="range" id="SoundOr0" value="0" min="-180" max="180.0" step="1" onchange="UpdateOr(0, value)"/>	
+				<input type="range" id="SoundOr1" value="0" min="-180" max="180.0" step="1" onchange="UpdateOr(1, value)"/>	
+				<input type="range" id="SoundOr2" value="0" min="-180" max="180.0" step="1" onchange="UpdateOr(2, value)"/>
 			</OrSound></div>
 			<div><DispSoundO>
 				<input type="button" id="DispSoundOr0" value="0"/>
@@ -49,12 +61,30 @@
 			</Test></div>
 		</Demo1></div>
 		<div class="Demo2"><Demo2>
+			<div><OrSound>
+				<input type="range" id="SoundConvolvOr0" value="0" min="-180" max="180.0" step="1" onchange="UpdateConvolvOr(0, value)"/>	
+				<input type="range" id="SoundConvolvOr1" value="0" min="-180" max="180.0" step="1" onchange="UpdateConvolvOr(1, value)"/>	
+				<input type="range" id="SoundConvolvOr2" value="0" min="-180" max="180.0" step="1" onchange="UpdateConvolvOr(2, value)"/>
+			</OrSound></div>
+			<div><DispSoundO>
+				<input type="button" id="DispSoundConvolvOr0" value="0"/>
+				<input type="button" id="DispSoundConvolvOr1" value="0"/>
+				<input type="button" id="DispSoundConvolvOr2" value="0"/>
+			</DispSoundO></div>
 		</Demo2></div>
+		<div class="Demo3"><Demo3>
+		</Demo3></div>
+		<div class="Demo4"><Demo4>
+		</Demo4></div>
 		<div><Libraries>
 			<script type="text/javascript" src="node_modules/ambisonics/ambisonics.umd.js"></script>
-			<script type="text/javascript" src="Common.js"></script>
-			<script type="text/javascript" src="Sound1.js"></script>
+			<script type="text/javascript" src="../MyJSAmbisonics/ambisonics.umd.js"></script>
+
+			<script type="text/javascript" src="Common.js"></script><!-- 
+			<script type="text/javascript" src="Sound1.js"></script> --><!-- 
 			<script type="text/javascript" src="Sound2.js"></script>
+			<script type="text/javascript" src="Sound3.js"></script> -->
+			<script type="text/javascript" src="Sound4.js"></script>
 		</Libraries></div>
 	</body>
 </html>
