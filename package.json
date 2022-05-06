@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "ambisonics": "^0.2.3"
+    "ambisonics": "^0.2.3",
+    "audio-buffer-utils": "^5.1.2"
   }
 }

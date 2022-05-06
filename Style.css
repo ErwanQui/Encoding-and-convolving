@@ -3,27 +3,27 @@ body {
 	text-align: center;
 }
 
-.FileChoice {
+.Begin {
 	visibility: hidden;
 	position: absolute;
 }
+
+/*.FileChoice {
+	visibility: hidden;
+	position: absolute;
+}*/
 
 .Common {
 	visibility: hidden;
 	position: absolute;
 }
 
-.Demo1 {
+.Demo {
 	visibility: hidden;
 	position: absolute;
 }
 
-.Demo2 {
+.Place {/*
 	visibility: hidden;
-	position: absolute;
-}
-
-.Demo3 {
-	visibility: hidden;
-	position: absolute;
+	position: absolute;*/
 }
