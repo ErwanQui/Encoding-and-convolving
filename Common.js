@@ -1,6 +1,6 @@
 const audioContext = new AudioContext();
 var gainControl = audioContext.createGain();
-var space = audioContext.createPanner()
+var space = audioContext.createPanner();
 
 console.log(ambisonics)
 
@@ -50,9 +50,21 @@ var coefRIR = [coefRIR1, coefRIR2, coefRIR3];
 var BeginButton = document.getElementsByClassName("BeginButton")[0];
 var BeginElem = document.getElementsByClassName("Begin")[0];
 var Common = document.getElementsByClassName("Common")[0];
+var FileChoice = document.getElementById("File");
+var Track = document.getElementById("ProvideTrack");
 var Valid = document.getElementById("Valid");
 var Place = document.getElementsByClassName("Place")[0];
 var Interpolation = document.getElementsByClassName("Interpolation")[0];
+var Audio = document.getElementById("ProvidedAudio");
+
+class sourceObject {
+
+    constructor(type, name) {
+
+        this.type = type;
+        this.name = name;
+    }
+}
 
 // fonction de lancement du projet : affiche l'interface, lance l'audio, fait les connexions initiales et crée les objets
 
@@ -130,10 +142,26 @@ function Choice(id, value) {
 function Verify(file) {
 	if (file) {
 		Valid.disabled = false;
+		Track.disabled = true;
 		source = file;
 	}
 	else {
 		Valid.disabled = true;
+		Track.disabled = false;
+		source = null;
+	}
+}
+
+function AudioBuild(value) {
+	if (value) {
+		Valid.disabled = false;
+		FileChoice.disabled = true;
+		source = new sourceObject("audio/wav", "4 Audio Track.wav");
+	}
+	else {
+		Valid.disabled = true;
+		FileChoice.disabled = false;
+		source = null;
 	}
 }
 
@@ -186,7 +214,7 @@ function Playing(inc) {
 }
 
 function DispVal(value) {
-	document.getElementById("DispSoundValue").value = value;
+	document.getElementById("DispSoundValue").value = "Volume : " + value;
 	gainControl.gain.setValueAtTime(value, 0);
 }
 
@@ -195,17 +223,19 @@ function UpdatePos(i, pos){
 	encoder.azim = position[0];
 	encoder.elev = position[1];
 	encoder.updateGains();
-	document.getElementById("DispSoundPlace"+i).value = pos;
+	document.getElementById("DispSoundPlace").value = "Azimut : " + position[0] + "°; Elevation : " + position[1] + "°;";
 }
 
 function UpdateOr(i, or){
-	document.getElementById("DispSoundOr"+i).value = or;
 	orientation[i] = or;
 	rotator.yaw = orientation[0];
 	rotator.pitch = orientation[1];
 	rotator.roll = orientation[2];
+	document.getElementById("DispSoundOr").value = "Lacet : " + orientation[0] + "°; Tangage : " + orientation[1] + "°; Roulis : " + orientation[2] + "°;";
 	rotator.updateRotMtx();
 }
+
+// fonction mettant à jour les gains associées au RIRs selon les valeurs d'entrée
 
 function SetRIRsValues(value1, value2, value3) {
 	coefRIR[0].gain.setValueAtTime(value1/10, 0);
@@ -221,7 +251,7 @@ function UpdateRIRs(value) {
 
 		}
 		if (value == 0) {
-			posRIRs = "RIR1";
+			posRIRs = "RIR1;";
 			SetRIRsValues(10-value, 0, 0);
 		}
 		else {
@@ -242,7 +272,7 @@ function UpdateRIRs(value) {
 
 			}
 			if (value == 20) {
-				posRIRs = "RIR3";
+				posRIRs = "RIR3;";
 				SetRIRsValues(0, 0, value);
 			}
 			else {
@@ -260,7 +290,7 @@ function UpdateRIRs(value) {
 				hoa_loader_conv[1].load();
 				loadRIR2 = !loadRIR2;
 			}
-			posRIRs = "RIR2";
+			posRIRs = "RIR2;";
 			SetRIRsValues(0, value, 0);
 		}
 	}
