@@ -1,2 +1,2 @@
 # NodePlay
- A lot of non common things
+Encoding and convolving sound
