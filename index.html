@@ -18,12 +18,12 @@
 				<input type="number" id="Order" value="3" min="0" max="3"disabled="true"/>
 				<label for="Order">Order</label>
 			</Order></div>
-			<h3>Mode and file choices</h3>
+			<h2>Mode and file choices</h2>
 			<div class="Mode"><Mode>
 				<input type="button" id="Demo1" value="Normal encoding" disabled onclick="Choice(id, 1)"/>
 				<input type="button" id="Demo4" value="Convolve" onclick="Choice(id, 4)"/>
 			</Mode></div>
-			<div class="FileChoice"><FileChoice>
+			<div class="Choice"><Choice>
 				<div><PlaySound>
 					<input type="file" id="File" accept="audio/mpeg, audio/wav" onchange="Verify(files[0])"/>
 					<input type="checkbox" id="ProvideTrack" onchange="AudioBuild(checked)"/>
@@ -32,9 +32,14 @@
 				<div><DispSound>
 					<input type="button" id="Valid" value="Validate" disabled onclick="Validate()"/>
 				</DispSound></div>
-			</FileChoice></div>
+			</Choice></div>
 		</Begin></div>
 		<div class="Common"><Common>
+			<h2>Sound Controls</h2>
+			<div class="PlayPause"><PlayPause>
+				<input type="button" id="Play" value="Play" onclick="PlayPause(this)"/>
+				<input type="button" id="Pause" value="Pause" disabled onclick="PlayPause(this)"/>
+			</PlayPause></div>
 			<h4>Volume</h4>
 			<div><PlaySound>
 				<input type="range" id="SoundValue" value="0.5" min="0.0" max="2.0" step="0.1" oninput="DispVal(value)"/>

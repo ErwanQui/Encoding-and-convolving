@@ -167,6 +167,8 @@ function AudioBuild(value) {
 
 function Validate() {
 	if (source) {
+		document.getElementsByClassName("Choice")[0].style.visibility = "hidden";
+		document.getElementsByClassName("Choice")[0].style.position = "absolute";
 		AudioBegin(source);
 	}
 	else {
@@ -210,7 +212,24 @@ function Playing(inc) {
 	sound.loop = true;
 	sound.buffer = soundBuffer;
 	sound.start(0);
-	sound.isPlaying = true;
+	audioContext.suspend();
+	sound.isPlaying = false;
+}
+
+function PlayPause(object) {
+	if (object.id == "Play") {
+		audioContext.resume();
+		sound.isPlaying = true;
+		object.disabled = true;
+		document.getElementById("Pause").disabled = false;
+	}
+	else {
+		audioContext.suspend();
+		sound.isPlaying = false;
+		object.disabled = true;
+		document.getElementById("Play").disabled = false;
+
+	}
 }
 
 function DispVal(value) {
