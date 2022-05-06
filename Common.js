@@ -108,7 +108,7 @@ function Begin() {
 function Choice(value) {
 	audioChoice = "Audio"+value;
 
-	if (value == "Convolve") {
+	if (value == 4) {
 		Place.style.visibility = "hidden";
 		Place.style.position = "absolute";
 		Interpolation.style.visibility = "";
