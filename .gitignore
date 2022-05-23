@@ -1,2 +1,7 @@
 #node files
 /node_module
+
+# junk files
+package-lock.json
+.DS_Store
+Thumbs.db
