@@ -10,9 +10,13 @@ var posRIRs;
 
 // Initialisation des différentes sources liées aux RIRs
 
-const UrlRIR1 = 'rir-test/room_2.wav';
-const UrlRIR2 = 'rir-test/room_3.wav';
-const UrlRIR3 = 'rir-test/room_4.wav';
+// const UrlRIR1 = 'rir-test/room_2.wav';
+// const UrlRIR2 = 'rir-test/room_3.wav';
+// const UrlRIR3 = 'rir-test/room_4.wav';
+
+const UrlRIR1 = "steliz_octamic_m01_s5a_bin.wav";
+const UrlRIR2 = "steliz_octamic_m01_s3a_bin.wav";
+const UrlRIR3 = "steliz_octamic_m01_s4a_bin.wav";
 
 const UrlRIR = [UrlRIR1, UrlRIR2, UrlRIR3];
 
